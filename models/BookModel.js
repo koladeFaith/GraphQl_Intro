@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 const bookSchema = new mongoose.Schema({
     name: {
-        type: String, required: true
+        type: String, required: true, unique: true
     },
     id: {
         type: String, required: true
@@ -9,7 +9,9 @@ const bookSchema = new mongoose.Schema({
     genre: {
         type: String, required: true
     }
-}
+},
+    { timestamps: true }
+
 )
 const BookModel = mongoose.model('Book', bookSchema)
 module.exports = (BookModel)
