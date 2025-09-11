@@ -4,6 +4,8 @@ const authorSchema = new mongoose.Schema({
         type: String, required: true, unique: true
     },
     age: {
+        type: Number, required: true,
+        type: Number, required: true,
         type: Number, required: true
     }
 },
