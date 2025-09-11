@@ -60,7 +60,6 @@ const Mutation = new GraphQLObjectType({
                     let author = new authorModel({
                         name: args.name,
                         age: args.age,
-                        nationality: args.nationality
                     });
                     console.log('author saved');
                     return await author.save();
@@ -74,7 +73,7 @@ const Mutation = new GraphQLObjectType({
             args: {
                 name: { type: new GraphQLNonNull(GraphQLString) },
                 genre: { type: new GraphQLNonNull(GraphQLString) },
-                authorId: { type: new GraphQLNonNull(GraphQLID) }
+                authorId: { type: new GraphQLNonNull(GraphQLString) }
             },
             async resolve(parent, args) {
                 try {
@@ -113,15 +112,13 @@ const RootQuery = new GraphQLObjectType({
         book: {
             type: new graphql.GraphQLList(BookType),
             resolve(parent, args) {
-                return books
-                // return bookModel.findById(args.id)
+                return bookModel.find({})
             }
         },
         author: {
             type: new GraphQLList(AuthorType),
             resolve(parent, args) {
-                return author
-                // return authorModel.findById(args.id)
+                return authorModel.find({})
 
             }
         }
